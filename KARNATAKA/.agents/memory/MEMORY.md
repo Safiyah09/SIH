@@ -1,0 +1,1 @@
+- [Workspace package installation](package-install.md) — package firewall and pnpm wrapper quirks can block installs before source verification starts.
