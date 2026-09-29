@@ -1,0 +1,288 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+
+@theme inline {
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-fraunces);
+  --color-kalamkari: #d96b27;
+  --color-kumkum: #a83232;
+  --color-turmeric: #d9a441;
+  --color-kondapalli: #9a633b;
+  --color-leaf: #4f7045;
+  --color-coastal: #3e7c8a;
+  --color-parchment: #fff1d2;
+  --color-ink: #382a23;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  color-scheme: light;
+  --background: #fff1d2;
+  --foreground: #382a23;
+  --card: #fff8e8;
+  --card-foreground: #382a23;
+  --popover: #fff8e8;
+  --popover-foreground: #382a23;
+  --primary: #d96b27;
+  --primary-foreground: #fff8e8;
+  --secondary: #a83232;
+  --secondary-foreground: #fff8e8;
+  --muted: #f6e2b8;
+  --muted-foreground: #6b5244;
+  --accent: #d9a441;
+  --accent-foreground: #382a23;
+  --destructive: #a83232;
+  --border: #e8cf9d;
+  --input: #e8cf9d;
+  --ring: #d96b27;
+  --chart-1: #d96b27;
+  --chart-2: #a83232;
+  --chart-3: #d9a441;
+  --chart-4: #4f7045;
+  --chart-5: #3e7c8a;
+  --radius: 0.75rem;
+  --sidebar: #fff8e8;
+  --sidebar-foreground: #382a23;
+  --sidebar-primary: #d96b27;
+  --sidebar-primary-foreground: #fff8e8;
+  --sidebar-accent: #f6e2b8;
+  --sidebar-accent-foreground: #382a23;
+  --sidebar-border: #e8cf9d;
+  --sidebar-ring: #d96b27;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .control-chip,
+  .difficulty-chip {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-border px-3.5 py-2 text-sm font-semibold capitalize transition-colors hover:border-primary hover:bg-primary/5;
+  }
+
+  .control-chip-active {
+    @apply border-primary bg-primary text-primary-foreground hover:bg-primary;
+  }
+
+  .difficulty-easy {
+    @apply border-leaf bg-leaf text-parchment hover:bg-leaf;
+  }
+
+  .difficulty-medium {
+    @apply border-turmeric bg-turmeric text-ink hover:bg-turmeric;
+  }
+
+  .difficulty-hard {
+    @apply border-kumkum bg-kumkum text-parchment hover:bg-kumkum;
+  }
+
+  .game-panel {
+    @apply mt-8 rounded-3xl border border-border bg-card p-4 shadow-xl shadow-kondapalli/10 md:p-6;
+  }
+
+  .game-board-shell {
+    @apply rounded-3xl border border-border bg-background p-4 md:p-6;
+  }
+
+  .dice-button {
+    @apply flex min-w-24 flex-col items-center justify-center rounded-2xl border-2 border-turmeric bg-turmeric/15 px-3 py-2 transition-transform hover:-translate-y-0.5 disabled:hover:translate-y-0;
+  }
+
+  .dice-button-rolling {
+    animation: dice-wobble 0.4s ease-in-out infinite alternate;
+  }
+
+  .race-track {
+    @apply grid gap-2 rounded-3xl border-2 border-kondapalli/30 bg-kondapalli/10 p-2 sm:gap-3 sm:p-3;
+  }
+
+  .race-cell {
+    @apply relative flex min-h-16 flex-wrap content-center items-center justify-center gap-1 rounded-xl border border-border bg-card p-1 shadow-sm sm:min-h-20;
+  }
+
+  .race-cell-safe {
+    @apply border-turmeric/60 bg-turmeric/10;
+  }
+
+  .race-cell-home {
+    @apply border-kumkum/50 bg-kumkum/10;
+  }
+
+  .race-cell-number {
+    @apply absolute right-1 top-1 text-[9px] font-bold text-muted-foreground/70;
+  }
+
+  .race-piece,
+  .nest-piece {
+    @apply relative z-10 flex size-7 items-center justify-center rounded-full border-2 border-parchment text-[10px] font-bold text-parchment shadow-md transition-transform;
+  }
+
+  .race-piece-legal {
+    @apply cursor-pointer ring-4 ring-turmeric/45 hover:scale-110;
+    animation: piece-pulse 1.3s ease-in-out infinite;
+  }
+
+  .race-piece-hint {
+    @apply ring-4 ring-leaf/50;
+  }
+
+  .nest-piece {
+    @apply size-9;
+  }
+
+  .nest-piece-muted {
+    @apply border-border bg-muted text-muted-foreground shadow-none;
+  }
+
+  .mancala-board {
+    @apply relative rounded-[2rem] border-4 border-kondapalli/70 bg-kondapalli/20 p-4 shadow-inner sm:p-6;
+  }
+
+  .mancala-row {
+    @apply grid grid-cols-7 gap-2 sm:gap-3;
+  }
+
+  .mancala-player-label {
+    @apply mb-3 text-center text-xs font-bold uppercase tracking-[0.14em] text-muted-foreground;
+  }
+
+  .mancala-player-bottom {
+    @apply mb-0 mt-3;
+  }
+
+  .mancala-centre {
+    @apply my-4 flex min-h-16 flex-col items-center justify-center rounded-2xl border border-turmeric/50 bg-turmeric/15 text-center font-serif text-sm font-semibold text-kondapalli;
+  }
+
+  .mancala-centre small {
+    @apply mt-0.5 font-sans text-[9px] font-bold uppercase tracking-widest text-muted-foreground;
+  }
+
+  .mancala-pit {
+    @apply relative flex min-h-24 flex-col items-center justify-center rounded-2xl border border-kondapalli/25 bg-parchment/70 p-1 text-kondapalli transition-all hover:border-kondapalli/60 sm:min-h-28;
+  }
+
+  .mancala-pit-legal {
+    @apply cursor-pointer border-kumkum bg-kumkum/10 ring-4 ring-kumkum/15 hover:-translate-y-1;
+  }
+
+  .mancala-pit-hint {
+    @apply ring-4 ring-turmeric/50;
+  }
+
+  .mancala-pit strong {
+    @apply mt-1 font-serif text-xl;
+  }
+
+  .mancala-pit small {
+    @apply text-[8px] font-bold uppercase tracking-wider text-muted-foreground;
+  }
+
+  .seed-dot {
+    @apply size-2 rounded-full bg-primary shadow-sm;
+  }
+
+  .paramapada-board {
+    @apply grid grid-cols-10 overflow-hidden rounded-2xl border-4 border-leaf/50 bg-leaf/10;
+  }
+
+  .paramapada-cell {
+    @apply relative flex min-h-10 flex-wrap content-start items-start gap-0.5 p-1 text-[10px] font-bold sm:min-h-14 sm:p-1.5 sm:text-xs;
+  }
+
+  .paramapada-cell-light {
+    @apply bg-parchment;
+  }
+
+  .paramapada-cell-dark {
+    @apply bg-turmeric/15;
+  }
+
+  .paramapada-cell > span:first-child {
+    @apply text-muted-foreground;
+  }
+
+  .paramapada-ladder {
+    @apply bg-leaf/20;
+  }
+
+  .paramapada-snake {
+    @apply bg-kumkum/15;
+  }
+
+  .paramapada-mark {
+    @apply absolute bottom-0.5 right-1 font-serif text-lg text-leaf sm:text-xl;
+  }
+
+  .paramapada-snake .paramapada-mark {
+    @apply text-kumkum;
+  }
+
+  .paramapada-hint {
+    @apply ring-4 ring-inset ring-turmeric;
+  }
+
+  .paramapada-token {
+    @apply relative z-10 flex size-5 items-center justify-center rounded-full border border-parchment text-[9px] font-bold text-parchment shadow-md sm:size-6;
+  }
+
+  .heritage-pattern {
+    background-image: radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0);
+    background-size: 20px 20px;
+  }
+}
+
+@keyframes piece-pulse {
+  0%, 100% { box-shadow: 0 0 0 3px rgb(217 164 65 / 0.25); }
+  50% { box-shadow: 0 0 0 6px rgb(217 164 65 / 0.08); }
+}
+
+@keyframes dice-wobble {
+  from { transform: rotate(-4deg) translateY(1px); }
+  to { transform: rotate(4deg) translateY(-1px); }
+}
